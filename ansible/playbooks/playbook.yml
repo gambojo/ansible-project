@@ -1,0 +1,34 @@
+---
+- name: playbook 1
+  hosts: all
+  become: yes
+
+  tasks:
+  #- block:  
+    #- name: copy script
+      #copy:
+        #src: /etc/ansible/playbooks/script.sh
+        #dest: /home/adm_user/script.sh
+        #mode: 0777
+    #when: ansible_architecture == "x86_64"
+
+  #- block:  
+    #- name: copy file 1
+      #copy:
+        #src: /home/adm_user/ansible/hosts
+        #dest: /home/adm_user/ansible/hosts7
+        #mode: 0770
+    #when: ansible_architecture == "x86_64"
+
+  #- name: run script
+    #command: "sudo bash /home/adm_user/script.sh" #{{ item }}
+#    with_items:
+#    - "apt update -y"
+#    - "apt upgrade -y"
+
+#    when: ansible_architecture == "x86_64"
+
+  - name: run script
+    ansible.builtin.script:
+      executable: /home/adm_user/script.sh
+...
